@@ -67,7 +67,7 @@
 
                 {{-- Login Form --}}
                 <form
-                    {{-- action="{{ route('login') }}" --}}
+                    action="{{ route('login') }}"
                     method="POST"
                     class="mt-12 space-y-6"
                 >
@@ -181,6 +181,13 @@
                     </button>
 
                 </form>
+
+                <p class="mt-6 text-center text-sm text-slate-600">
+                    Belum punya akun? <a href="{{ route('register') }}" class="font-semibold text-blue-600">Daftar</a>
+                </p>
+                @if (session('status'))
+                    <p role="status" class="mt-4 rounded-xl bg-green-50 px-4 py-3 text-sm text-green-700">{{ session('status') }}</p>
+                @endif
 
             </div>
 

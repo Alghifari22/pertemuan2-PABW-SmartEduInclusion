@@ -18,7 +18,5 @@
             </a>
         @endforeach
     </nav>
-    <a href="/login" class="mt-auto flex items-center gap-3 px-3 py-3 text-sm text-slate-600 hover:text-red-600">
-        <i data-lucide="log-out" class="h-[19px] w-[19px]"></i>Keluar
-    </a>
+    <form method="POST" action="{{ route('logout') }}" class="mt-auto">@csrf<button type="submit" class="flex w-full items-center gap-3 px-3 py-3 text-sm text-slate-600 hover:text-red-600"><i data-lucide="log-out" class="h-[19px] w-[19px]"></i>Keluar</button></form>
 </aside>

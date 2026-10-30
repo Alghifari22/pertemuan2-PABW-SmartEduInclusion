@@ -7,7 +7,6 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use Faker\Factory as Faker;
 
-use Illuminate\Support\Facades\DB;
 class SmartEduSeeder extends Seeder
 {
     public function run(): void
@@ -37,8 +36,9 @@ class SmartEduSeeder extends Seeder
         $faker = Faker::create('id_ID');
 
         for ($i = 1; $i <= 15; $i++) {
-            DB::table('modules')->insert([
-                'kode_modul' => 'MOD-' . str_pad($i, 3, '0', STR_PAD_LEFT),
+            \App\Models\Module::updateOrCreate(
+                ['kode_modul' => 'MOD-' . str_pad($i, 3, '0', STR_PAD_LEFT)],
+                [
                 'judul' => $faker->randomElement([
                     'Bilangan Dasar',
                     'Makhluk Hidup di Sekitar Kita',
@@ -62,7 +62,8 @@ class SmartEduSeeder extends Seeder
                     'Bahasa Inggris',
                 ]),
                 'kelas' => 'Kelas ' . $faker->numberBetween(1, 6),
-            ]);
+                ]
+            );
         }
     }
 }
