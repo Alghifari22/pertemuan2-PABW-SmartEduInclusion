@@ -1,0 +1,4 @@
+@extends('layouts.guru', ['title' => 'Detail Materi - SmartEdu'])
+@section('content')
+<div class="mx-auto max-w-4xl pb-12"><a href="/guru/materi" class="inline-flex items-center gap-2 text-sm font-medium text-blue-700"><i data-lucide="arrow-left" class="h-4 w-4"></i>Kembali ke materi</a><h1 class="mt-8 text-3xl font-bold">Detail Materi {{ $kodeMateri }}</h1><section class="mt-8 space-y-5">@forelse($pages as $page)<article class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"><div class="flex gap-4"><span class="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-100 font-bold text-blue-700">{{ $page['urutan'] }}</span><div><h2 class="font-bold">{{ $page['judul'] }}</h2><p class="mt-2 text-slate-600">{{ $page['isi'] }}</p></div></div></article>@empty<x-alert type="info">Belum ada halaman materi.</x-alert>@endforelse</section></div>
+@endsection

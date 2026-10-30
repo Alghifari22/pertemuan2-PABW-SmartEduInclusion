@@ -2,17 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Module;
 use Illuminate\Http\Request;
 
 class GuruModulController extends Controller
 {
+    public function index()
+    {
+        $modules = Module::all();
+
+        return view('guru.modul.index', compact('modules'));
+    }
+
     public function store(Request $request)
     {
-       $kode_modul = $request->input('kode_modul');
-       $judul = $request->input('judul');
-       $mata_pelajaran = $request->input('mata_pelajaran');
-       $kelas = $request->input('kelas');
 
-        return view('guru.guru-modul', compact('kode_modul', 'judul', 'mata_pelajaran', 'kelas'));
+        $module = Module::create($request->all());
+
+        return view('guru.modul.index', [
+            'modules' => $module,
+            'success' => 'Modul berhasil ditambahkan.',
+        ]);
     }
 }
